@@ -68,7 +68,7 @@ router.post("/forget-password",async(req,res)=>{
             const secret = secretKey+user._id
             console.log("Step1: secret",secret)
             console.log(user.email)
-            const token = await jwt.sign({email:user.email,id:user._id},secret,{expiresIn:"3min"})
+            const token = await jwt.sign({email:user.email,id:user._id},secret,{expiresIn:"15min"})
             const link = `http://localhost:3000/resetPassword/${user._id}/${token}`;
             user.token=token
             await user.save()
