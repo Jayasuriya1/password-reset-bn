@@ -69,7 +69,7 @@ router.post("/forget-password",async(req,res)=>{
             console.log("Step1: secret",secret)
             console.log(user.email)
             const token = await jwt.sign({email:user.email,id:user._id},secret,{expiresIn:"15min"})
-            const link = `http://localhost:3000/resetPassword/${user._id}/${token}`;
+            const link = `https://rsj-password-reset.netlify.app/resetPassword/${user._id}/${token}`;
             user.token=token
             await user.save()
 
